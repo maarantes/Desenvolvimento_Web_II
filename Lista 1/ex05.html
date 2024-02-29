@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 05</title>
+</head>
+
+<body>
+    
+    <h1>Calculadora de salário</h1>
+
+    <form id="formulario">
+
+        <label for="horas">Número de horas trabalhadas no mês:</label>
+        <input type="number" id="horas" required><br>
+
+        <label for="turno">Turno de trabalho: (M, V ou N):</label>
+        <input type="text" id="turno" required><br>
+
+        <label for="cargo">Seu cargo (F ou G):</label>
+        <input type="text" id="cargo" required><br>
+
+        <label for="salario_min">Salário mínimo do seu Estado:</label>
+        <input type="number" id="salario_min" required><br>
+
+        <button type="button" onclick="calcularSalario()">Calcular Salário</button>
+    </form>
+
+    <p id="resposta_salario">Resultado: </p>
+    
+</body>
+
+<script>
+
+    function calcularSalario() {
+
+        const horas = document.getElementById("horas").value;
+        const turno = document.getElementById("turno").value;
+        const cargo = document.getElementById("cargo").value;
+        const salario_min = document.getElementById("salario_min").value;
+
+        var salario_inicial = 0
+        var auxilio = 0
+        
+        if (turno == "M" || turno == "V") {
+            if (cargo == "F") {
+                salario_inicial = horas * (salario_min * 0.01)
+            }
+            else {
+                salario_inicial = horas * (salario_min * 0.04)
+            }
+        }
+        else if (turno == "N") {
+            salario_inicial = horas * (salario_min * 0.02)
+        }
+
+        if (salario_inicial <= 800) {
+            auxilio = salario_inicial * 0.25
+        }
+        else if (salario_inicial > 800 && salario_inicial < 1200) {
+            auxilio = salario_inicial * 0.20
+        }
+        else {
+            auxilio = salario_inicial * 0.15
+        }
+
+        valor_hora = horas / salario_inicial
+        salario_total = salario_inicial + auxilio
+
+        document.getElementById("resposta_salario").innerHTML = "Resultado: <br> Número de horas trabalhadas: " + horas + "<br> Valor da hora trabalhada: R$" + valor_hora.toFixed(2) + "<br> Salário inicial: R$" + salario_inicial.toFixed(2) + "<br> Valor do Auxílio Alimentação: R$" + auxilio.toFixed(2) + "<br> Salário total: R$" + salario_total.toFixed(2)
+        
+    }
+
+</script>
+
+</html>

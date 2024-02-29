@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 04</title>
+</head>
+
+<body>
+    
+    <h1>Calculadora de frete</h1>
+
+    <form id="formulario">
+
+        <label for="regiao">Digite o número da região:</label>
+        <input type="number" id="regiao" required><br>
+
+        <label for="distancia">Digita a distância em quilômetro:</label>
+        <input type="number" id="distancia" required><br>
+
+        <label for="pecas">Digite o número de peças:</label>
+        <input type="number" id="pecas" required><br>
+
+        <label for="rastreamento">Deseja rastreamento? (S ou N):</label>
+        <input type="text" id="rastreamento" required><br>
+
+        <button type="button" onclick="calcularFrete()">Calcular Frete</button>
+    </form>
+
+    <p id="resposta_frete">Resultado: </p>
+    
+</body>
+
+<script>
+
+    function calcularFrete() {
+
+        const regiao = document.getElementById("regiao").value;
+        const distancia = document.getElementById("distancia").value;
+        const pecas = document.getElementById("pecas").value;
+        const rastreamento = document.getElementById("rastreamento").value;
+
+        var pecas_valor = 0
+        var pecas_extras = 0
+        var pecas_extras_valor = 0
+
+        if (regiao == 1) {
+            if (pecas <= 1000) {
+                pecas_valor = pecas * 1
+            }
+            else {
+                pecas_valor = pecas * 1
+                pecas_extras = pecas - 1000
+                pecas_extras_valor = pecas_extras * 0.9
+            }
+        }
+
+        else if (regiao == 2) {
+            if (pecas <= 1000) {
+                pecas_valor = pecas * 1.20
+            }
+            else {
+                pecas_valor = pecas * 1.20
+                pecas_extras = pecas - 1000
+                pecas_extras_valor = pecas_extras * 1.08
+            }
+        }
+
+        else {
+            if (pecas <= 1000) {
+                pecas_valor = pecas * 1.30
+            }
+            else {
+                pecas_valor = pecas * 1.30
+                pecas_extras = pecas - 1000
+                pecas_extras_valor = pecas_extras * 1.17
+            }
+        }
+
+        if (rastreamento == "S") {
+            pecas_total = pecas_valor + pecas_extras_valor + 200
+        }
+        else {
+            pecas_total = pecas_valor + pecas_extras_valor
+        }
+
+        preco_km = distancia / pecas_total
+
+        document.getElementById("resposta_frete").innerHTML = "Resultado: <br> Valor do frete pelas peças: R$" + pecas_total + "<br> Valor por quilômetro: R$" + preco_km.toFixed(2)
+    }
+
+</script>
+
+</html>

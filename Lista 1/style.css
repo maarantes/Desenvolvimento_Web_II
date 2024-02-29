@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    text-decoration: none;
+    list-style-position: inside;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 2% 8%;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 1px solid #ababab;
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+input {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-bottom: 20px;
+}

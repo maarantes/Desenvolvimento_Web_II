@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 03</title>
+</head>
+
+<body>
+    
+    <h1>Calculadora de nota</h1>
+
+    <form id="formulario">
+        <label for="nota1">Nota da atividade prática (laboratório):</label>
+        <input type="number" id="nota1" required><br>
+
+        <label for="nota2">Nota da prova semestral:</label>
+        <input type="number" id="nota2" required><br>
+
+        <label for="nota3">Nota do trabalho teórico:</label>
+        <input type="number" id="nota3" required><br>
+
+        <button type="button" onclick="calcularNota()">Calcular Nota</button>
+    </form>
+
+    <p id="resposta_nota">Resultado: </p>
+
+</body>
+
+<script>
+
+    function calcularNota() {
+
+        const nota1 = parseFloat(document.getElementById("nota1").value);
+        const nota2 = parseFloat(document.getElementById("nota2").value);
+        const nota3 = parseFloat(document.getElementById("nota3").value);
+        
+        const nota_final = ((2 * nota1) + (5 * nota2) + (3 * nota3)) / 10
+
+        if (nota_final >= 9) { 
+            var resultado_nota = "A"
+        }
+        else if (nota_final >= 8 && nota_final < 9) {
+            var resultado_nota = "B"
+        }
+        else if (nota_final >= 7 && nota_final < 8) {
+            var resultado_nota = "C"
+        }
+        else if (nota_final >= 6 && nota_final < 7) {
+            var resultado_nota = "D"
+        }
+        else if (nota_final >= 5 && nota_final < 6) {
+            var resultado_nota = "E"
+        }
+        else if (nota_final <= 5) {
+            var resultado_nota = "F"
+        }
+
+        document.getElementById("resposta_nota").textContent = "Resultado: A média do aluno é " + nota_final + " e sua classificação é " + resultado_nota;
+    }
+
+</script>
+
+</html>

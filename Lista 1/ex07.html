@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 07</title>
+</head>
+
+<body>
+    
+    <h1>Leitor de Data</h1>
+
+    <form id="formulario">
+
+        <label for="data">Digite a data (formato: dd/mm/aaaa)</label>
+        <input type="text" id="data" required><br>
+
+        <button type="button" onclick="calcularData()">Ver data</button>
+    </form>
+
+    <p id="resposta_data">Resultado: </p>
+    
+</body>
+
+<script>
+
+    function calcularData() {
+
+        const data = document.getElementById("data").value;
+
+        var partes = data.split("/");
+        
+        var dia = parseInt(partes[0]);
+        var mes = parseInt(partes[1]);
+        var ano = parseInt(partes[2]);
+
+        var meses = [ "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+        
+        document.getElementById("resposta_data").textContent = dia + " de " + meses[mes - 1] + " de " + ano;
+        
+    }
+
+</script>
+
+</html>
